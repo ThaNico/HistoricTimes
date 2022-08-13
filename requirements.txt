@@ -1,0 +1,10 @@
+django==4.0.6
+flake8==4.0.1
+gunicorn==20.1.0
+pip-chill==1.0.1
+# asgiref==3.5.2 # Installed as dependency for django
+# mccabe==0.6.1 # Installed as dependency for flake8
+# pycodestyle==2.8.0 # Installed as dependency for flake8
+# pyflakes==2.4.0 # Installed as dependency for flake8
+# sqlparse==0.4.2 # Installed as dependency for django
+# tzdata==2022.1 # Installed as dependency for django

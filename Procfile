@@ -1,0 +1,1 @@
+web: gunicorn gecepp.wsgi --log-file -
