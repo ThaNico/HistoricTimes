@@ -1,8 +1,15 @@
 {
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.linting.flake8Args": [
-        "--max-line-length=140",
-        "--ignore=W293,E126,E131,E201,E202,E203",
-    ],
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=140",
+    "--ignore=W293,E126,E131,E201,E202,E203"
+  ],
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.enable": true,
+  "editor.formatOnSave": true
 }
