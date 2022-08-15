@@ -1,4 +1,4 @@
-# HistoricHours V1
+# HistoricTimes V1
 
 ## Commandes utils
 - Gen secret : `python -c 'import secrets; print(secrets.token_hex(100))'`

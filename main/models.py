@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class HistoricHour(models.Model):
+class Event(models.Model):
     class Status(models.IntegerChoices):
         ON_HOLD = 0, 'On hold'
         VALID = 1, 'Valid'

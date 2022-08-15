@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from main.models import HistoricHour
+from main.models import Event
 
-admin.site.register(HistoricHour)
+admin.site.register(Event)

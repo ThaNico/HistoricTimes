@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from historic_hours.utils import requestUtil
+from historic_times.utils import requestUtil
 
 
 class HomeView(View):

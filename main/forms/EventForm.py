@@ -1,12 +1,12 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from main.forms.GenericForm import GenericForm
-from main.models import HistoricHour
+from main.models import Event
 
 
 class EventForm(GenericForm):
     class Meta:
-        model = HistoricHour
+        model = Event
         fields = ["time", "year", "label", "source"]
         labels = {
             "time": _("Historic time (hh:mm)"),
