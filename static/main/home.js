@@ -1,9 +1,9 @@
 const MS_BETWEEN_UPDATES = 20000; // TODO custom setting
-let timer;
+let timer = null;
 
 $(document).ready(function () {
   setInitialTimeValue();
-  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+  createTimer();
 
   $("#specific-search").on("click", setSpecificTimeValue);
 });
@@ -13,8 +13,14 @@ const setInitialTimeValue = () => {
   setTimeValue(current.getHours(), current.getMinutes());
 };
 
+const createTimer = () => {
+  if (timer) {
+    clearInterval(timer);
+  }
+  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+};
+
 const setTimeValue = (hours, minutes) => {
-  $("#events-container").empty();
   $("#hours").text(pad2numbers(hours));
   $("#minutes").text(pad2numbers(minutes));
   fetchEvents();
@@ -24,19 +30,17 @@ const pad2numbers = (number) =>
   number.toLocaleString(undefined, { minimumIntegerDigits: 2 });
 
 const fetchEvents = () => {
+  clearInterval(timer);
+
   const hours = $("#hours").text();
   const minutes = $("#minutes").text();
-  const urlToFetch = `/events/${hours}/${minutes}`;
   $.ajax({
     method: "GET",
-    url: urlToFetch,
-  })
-    .done(function (data) {
-      console.log("got", data);
-    })
-    .fail(function (data) {
-      clearInterval(timer);
-    });
+    url: `/events/${hours}/${minutes}`,
+  }).done(function (data) {
+    createTimer();
+    fillEventData(data);
+  });
 };
 
 const increaseTimeValue = () => {
@@ -58,5 +62,20 @@ const setSpecificTimeValue = () => {
   let minutes = parseInt($("#specific-minute").val());
   if (!isNaN(hours) && !isNaN(minutes)) {
     setTimeValue(hours, minutes);
+  }
+};
+
+const fillEventData = (data) => {
+  const container = $("#events-container");
+  container.empty();
+
+  for (const event of data) {
+    console.log(event);
+    const eventLine = $("#event-template").clone().removeAttr("id");
+    eventLine.find(".event-text").text(event["label"]);
+    eventLine.find(".event-source").text(event["source"]);
+    eventLine.find(".event-source").attr("href", event["source"]);
+    eventLine.appendTo(container);
+    console.log(eventLine);
   }
 };

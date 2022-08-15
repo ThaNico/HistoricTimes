@@ -2,28 +2,33 @@
 {% load static %}
 
 {% block content %}
-    <div id="time-container">
-        <span id="hours" class="time"></span>
-        <span id="minutes" class="time"></span>
-    </div>
+<div id="time-container">
+    <span id="hours" class="time"></span>
+    <span id="minutes" class="time"></span>
+</div>
 
-    <div id="specific-time">
-        <p>Looking for a specific time ?</p>
-        <p>
-            <label for="specific-hour">Hour :</label>
-            <input type="number" id="specific-hour" min="0" max="23" />
-        </p>
-        <p>
-            <label for="specific-minute">Minute :</label>
-            <input type="number" id="specific-minute" min="0" max="59" />
-        </p>
-        <p>
-            <button id="specific-search">Go</button>
-        </p>
-    </div>
-    <a href="{% url 'events-add' %}" class="waves-effect waves-light btn right"><i class="material-icons left">add</i>Add an event</a>
-    
-    <div id="events-container"></div>
+<div id="specific-time">
+    <p>Looking for a specific time ?</p>
+    <p>
+        <label for="specific-hour">Hour :</label>
+        <input type="number" id="specific-hour" min="0" max="23" />
+    </p>
+    <p>
+        <label for="specific-minute">Minute :</label>
+        <input type="number" id="specific-minute" min="0" max="59" />
+    </p>
+    <p>
+        <button id="specific-search">Go</button>
+    </p>
+</div>
+<a href="{% url 'events-add' %}" class="waves-effect waves-light btn right"><i class="material-icons left">add</i>Add an
+    event</a>
+
+<div id="events-container"></div>
+<div id="event-template" class="event">
+    <p class="event-text"></p>
+    <a class="event-source" href="#"></a>
+</div>
 
 {% endblock %}
 
