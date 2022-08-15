@@ -56,7 +56,7 @@ const increaseTimeValue = () => {
 const setSpecificTimeValue = () => {
   let hours = parseInt($("#specific-hour").val());
   let minutes = parseInt($("#specific-minute").val());
-  if (hours && minutes) {
+  if (!isNaN(hours) && !isNaN(minutes)) {
     setTimeValue(hours, minutes);
   }
 };

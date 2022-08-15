@@ -39,9 +39,9 @@
     });
 
     {% if message_success %}
-    M.toast({ html: "{{ message_success }}", classes: "green" })
+    M.toast({ text: "{{ message_success }}", classes: "green" })
     {% elif message_error %}
-    M.toast({ html: "{{ message_error }}", classes: "red" })
+    M.toast({ text: "{{ message_error }}", classes: "red" })
     {% endif %}
   </script>
   {% endblock %}
