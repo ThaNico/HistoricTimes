@@ -1,37 +1,50 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="{% static 'ext/css/materialize.min.css' %}"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'style.css' %}" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicons/site.webmanifest' %}">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'ext/css/materialize.min.css' %}" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="{% static 'style.css' %}" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta charset="utf-8">
-    <title>Historic hours</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div id="mainColumn" class="col s12 m12 l12">
-          {% block content %}
-          {% endblock %}
-        </div>
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicons/site.webmanifest' %}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <title>Historic hours</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="mainColumn" class="col s12 m12 l12">
+        {% block content %}
+        {% endblock %}
       </div>
     </div>
-    <script type="text/javascript" src="{% static 'ext/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'ext/js/materialize.min.js' %}"></script>
-    {% block custom_script %}
-      <script type="text/javascript">
-        $(document).ready(function() {
-          M.AutoInit()
-        })
-      </script>
-    {% endblock %}
-  </body>
+  </div>
+  <script type="text/javascript" src="{% static 'ext/js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'ext/js/materialize.min.js' %}"></script>
+  {% block custom_script %}
+  <script type="text/javascript">
+    $(document).ready(function () {
+      M.AutoInit()
+    })
+
+    $.ajaxSetup({
+      headers: { "X-CSRFToken": '{{ csrf_token }}' }
+    });
+
+    {% if message_success %}
+    M.toast({ html: "{{ message_success }}", classes: "green" })
+    {% elif message_error %}
+    M.toast({ html: "{{ message_error }}", classes: "red" })
+    {% endif %}
+  </script>
+  {% endblock %}
+</body>
+
 </html>

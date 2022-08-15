@@ -7,15 +7,15 @@ class HistoricHour(models.Model):
         ON_HOLD = 0, 'On hold'
         VALID = 1, 'Valid'
 
-    time = models.TimeField()
+    time = models.TimeField(null=False)
     year = models.IntegerField(
+        null=True,
         validators=[
             MaxValueValidator(2100),
             MinValueValidator(1500)
-        ]
-    )
-    label = models.CharField(max_length=128)
-    source = models.URLField()
+        ])
+    label = models.CharField(max_length=128, null=False)
+    source = models.URLField(null=False)
     status = models.PositiveSmallIntegerField(choices=Status.choices, default=Status.ON_HOLD)
 
     def __str__(self):

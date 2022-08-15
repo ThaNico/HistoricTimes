@@ -11,8 +11,8 @@ class EventForm(GenericForm):
         labels = {
             "time": _("Historic time (hh:mm)"),
             "year": _("Year of the event"),
-            "label": _("A short description"),
-            "source": _("A link where people can read more about the event"),
+            "label": _("A short sentence describing the event"),
+            "source": _("A link where people can read more about it"),
         }
     
     def __init__(self, *args, **kwargs):

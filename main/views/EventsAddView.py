@@ -1,6 +1,6 @@
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
+from django.utils.translation import gettext_lazy as _
 
 from ..forms.EventForm import EventForm
 
@@ -16,6 +16,7 @@ class EventsAddView(View):
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            print("add")
-            return JsonResponse({})
+            form.save()
+            request.session['message_success'] = str(_("Thank you, the event will be reviewed by moderators !"))
+            return redirect("home")
         return render(request, self.template_name, { 'form': form })
