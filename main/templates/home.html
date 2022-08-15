@@ -2,14 +2,26 @@
 {% load static %}
 
 {% block content %}
-    TODO compteur HH:MM + input to search
-    Load current time + 20 per page
-    Scroll down load more
-
     <div id="time-container">
         <span id="hours" class="time"></span>
         <span id="minutes" class="time"></span>
     </div>
+
+    <div id="specific-time">
+        <p>Looking for a specific time ?</p>
+        <p>
+            <label for="specific-hour">Hour :</label>
+            <input type="number" id="specific-hour" min="0" max="23" />
+        </p>
+        <p>
+            <label for="specific-minute">Minute :</label>
+            <input type="number" id="specific-minute" min="0" max="59" />
+        </p>
+        <p>
+            <button id="specific-search">Go</button>
+        </p>
+    </div>
+    
     <div id="events-container"></div>
 
 {% endblock %}

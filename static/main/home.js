@@ -1,8 +1,11 @@
 const MS_BETWEEN_UPDATES = 20000; // TODO custom setting
+let timer;
 
 $(document).ready(function () {
   setInitialTimeValue();
-  setInterval(increaseTime, MS_BETWEEN_UPDATES);
+  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+
+  $("#specific-search").on("click", setSpecificTimeValue);
 });
 
 const setInitialTimeValue = () => {
@@ -27,12 +30,16 @@ const fetchEvents = () => {
   $.ajax({
     method: "GET",
     url: urlToFetch,
-  }).done(function (data) {
-    console.log("got", data);
-  });
+  })
+    .done(function (data) {
+      console.log("got", data);
+    })
+    .fail(function (data) {
+      clearInterval(timer);
+    });
 };
 
-const increaseTime = () => {
+const increaseTimeValue = () => {
   let hours = parseInt($("#hours").text());
   let minutes = parseInt($("#minutes").text());
   minutes++;
@@ -44,4 +51,12 @@ const increaseTime = () => {
     }
   }
   setTimeValue(hours, minutes);
+};
+
+const setSpecificTimeValue = () => {
+  let hours = parseInt($("#specific-hour").val());
+  let minutes = parseInt($("#specific-minute").val());
+  if (hours && minutes) {
+    setTimeValue(hours, minutes);
+  }
 };
