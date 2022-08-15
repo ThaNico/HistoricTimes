@@ -6,6 +6,3 @@ class GenericForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
 
-        for fieldName in self.fields:
-            field = self.fields[fieldName]
-            field.widget.attrs["placeholder"] = field.label
