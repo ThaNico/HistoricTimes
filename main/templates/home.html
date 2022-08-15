@@ -1,1 +1,13 @@
-TODO home
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+    TODO compteur HH:MM + input to search
+    Load current time + 20 per page
+    Scroll down load more
+{% endblock %}
+
+{% block custom_script %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'main/home.js' %}"></script>
+{% endblock %}
