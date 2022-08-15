@@ -1,4 +1,4 @@
-const MS_BETWEEN_UPDATES = 20000; // TODO custom setting
+const MS_BETWEEN_UPDATES = 10000;
 let timer = null;
 
 $(document).ready(function () {
@@ -44,6 +44,8 @@ const fetchEvents = () => {
 };
 
 const increaseTimeValue = () => {
+  if (!document.hasFocus()) return;
+
   let hours = parseInt($("#hours").text());
   let minutes = parseInt($("#minutes").text());
   minutes++;
