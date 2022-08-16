@@ -94,12 +94,10 @@ const fillEventData = (data) => {
   }
 
   for (const event of data) {
-    console.log(event);
     const eventLine = $("#event-template").clone().removeAttr("id");
     eventLine.find(".event-text").text(event["label"]);
     eventLine.find(".event-source").text(event["source"]);
     eventLine.find(".event-source").attr("href", event["source"]);
     eventLine.appendTo(container);
-    console.log(eventLine);
   }
 };

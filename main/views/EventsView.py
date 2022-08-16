@@ -14,5 +14,5 @@ class EventsView(View):
         
         results = Event.objects.filter(status=Event.Status.VALID, time=time)\
             .values("label", "source").order_by('-id')[:MAX_EVENTS_PER_LOAD]
-        jsonData = EventSerializer(results, many=True).data if len(results) > 0 else {"message" : _("There is no data to display.")}
+        jsonData = EventSerializer(results, many=True).data if results else {"message" : _("There are no events to display at this time.")}
         return JsonResponse(jsonData, safe=False)
