@@ -10,9 +10,9 @@
 
 <div class="row">
 
-    <div id="events-container" class="col offset-s3 s6 offset-m3 m6 offset-l3 l6"></div>
+    <div id="events-container" class="col s7 m8 offset-l3 l6"></div>
 
-    <div id="specific-time" class="col s3 m3 l3">
+    <div id="specific-time" class="col s5 m4 l3">
         <div id="play-pause-container">
             <button id="play" style="display:none"
                 class="btn-floating btn-small waves-effect waves-light deep-orange darken-4"><i
@@ -31,9 +31,8 @@
                     class="material-icons">navigate_next</i></button>
         </p>
         <p>
-            <a href="{% url 'events-add' %}" class="waves-effect waves-light btn blue"><i
-                    class="material-icons left">add</i>Add an
-                event</a>
+            <a href="{% url 'events-add' %}" class="waves-effect waves-light btn blue hide-on-small-only">
+                Add an event</a>
         </p>
     </div>
 </div>
@@ -42,6 +41,13 @@
     <p class="event-text"></p>
     <a class="event-source" href="#"></a>
 </div>
+
+<div class="fixed-action-btn hide-on-med-and-up">
+    <a class="btn-floating btn-large blue" href="{% url 'events-add' %}">
+        <i class="large material-icons">add</i>
+    </a>
+</div>
+
 
 {% endblock %}
 
