@@ -1,0 +1,46 @@
+#time-container {
+  width: 200px;
+  font-weight: bold;
+  font-size: 4rem;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.time-separator {
+  vertical-align: text-bottom;
+  color: #fff;
+}
+
+.time,
+#specific-hour,
+#specific-minute {
+  font-family: sans-serif;
+  color: #222222;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0px 4px;
+  text-align: center;
+}
+
+#specific-hour,
+#specific-minute {
+  width: 40px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+#specific-search {
+  margin-left: 10px;
+}
+
+#specific-time label {
+  font-style: italic;
+}
+
+#specific-time p {
+  margin-top: 5px;
+}

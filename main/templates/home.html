@@ -4,27 +4,32 @@
 {% block content %}
 <div id="time-container">
     <span id="hours" class="time"></span>
+    <span class="time-separator">:</span>
     <span id="minutes" class="time"></span>
 </div>
 
-<div id="specific-time">
-    <p>Looking for a specific time ?</p>
-    <p>
-        <label for="specific-hour">Hour :</label>
-        <input type="number" id="specific-hour" min="0" max="23" />
-    </p>
-    <p>
-        <label for="specific-minute">Minute :</label>
-        <input type="number" id="specific-minute" min="0" max="59" />
-    </p>
-    <p>
-        <button id="specific-search">Go</button>
-    </p>
-</div>
-<a href="{% url 'events-add' %}" class="waves-effect waves-light btn right"><i class="material-icons left">add</i>Add an
-    event</a>
+<div class="row">
 
-<div id="events-container"></div>
+    <div id="events-container" class="col offset-s3 s6 offset-m3 m6 offset-l3 l6"></div>
+
+    <div id="specific-time" class="col s3 m3 l3">
+        <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
+        <p>
+            <input type="number" id="specific-hour" min="0" max="23" value="23" />
+            <span class="time-separator">:</span>
+            <input type="number" id="specific-minute" min="0" max="59" value="59" />
+
+            <button id="specific-search" class="btn-floating btn-small waves-effect waves-light blue"><i
+                    class="material-icons">navigate_next</i></button>
+        </p>
+        <p>
+            <a href="{% url 'events-add' %}" class="waves-effect waves-light btn blue"><i
+                    class="material-icons left">add</i>Add an
+                event</a>
+        </p>
+    </div>
+</div>
+
 <div id="event-template" class="event">
     <p class="event-text"></p>
     <a class="event-source" href="#"></a>
