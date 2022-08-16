@@ -53,8 +53,20 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #events-container {
-  text-align: center;
   font-size: 0.95rem;
+}
+
+.event-text {
+  margin-bottom: 0;
+}
+
+.event blockquote {
+  border-left: 4px solid #999999;
+  padding-left: 0.4rem;
+}
+
+.event-source:hover {
+  text-decoration: underline;
 }
 
 #play-pause-container {

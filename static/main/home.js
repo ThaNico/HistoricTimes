@@ -6,6 +6,12 @@ $(document).ready(function () {
   createTimer();
 
   $("#specific-search").on("click", setSpecificTimeValue);
+  $("#specific-hour, #specific-minute").on("keydown", function search(e) {
+    if (e.keyCode == 13) {
+      setSpecificTimeValue();
+    }
+  });
+
   $("#play").on("click", createTimer);
   $("#pause").on("click", stopTimer);
 });
