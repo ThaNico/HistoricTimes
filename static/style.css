@@ -4,7 +4,7 @@
   font-size: 4rem;
   height: 80px;
   margin: 0 auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .time-separator {
@@ -37,10 +37,34 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: 10px;
 }
 
+#specific-time {
+  text-align: center;
+}
+
 #specific-time label {
   font-style: italic;
 }
 
 #specific-time p {
   margin-top: 5px;
+}
+
+#events-container {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+#play-pause-container {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.3;
+  }
 }

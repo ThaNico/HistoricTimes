@@ -6,6 +6,8 @@ $(document).ready(function () {
   createTimer();
 
   $("#specific-search").on("click", setSpecificTimeValue);
+  $("#play").on("click", createTimer);
+  $("#pause").on("click", stopTimer);
 });
 
 const setInitialTimeValue = () => {
@@ -14,10 +16,20 @@ const setInitialTimeValue = () => {
 };
 
 const createTimer = () => {
+  stopTimer();
+  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+  $("#time-container .time-separator").addClass("blink");
+  $("#play").hide();
+  $("#pause").show();
+};
+
+const stopTimer = () => {
   if (timer) {
     clearInterval(timer);
   }
-  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+  $("#time-container .time-separator").removeClass("blink");
+  $("#play").show();
+  $("#pause").hide();
 };
 
 const setTimeValue = (hours, minutes) => {
@@ -30,7 +42,7 @@ const pad2numbers = (number) =>
   number.toLocaleString(undefined, { minimumIntegerDigits: 2 });
 
 const fetchEvents = () => {
-  clearInterval(timer);
+  stopTimer();
 
   const hours = $("#hours").text();
   const minutes = $("#minutes").text();
@@ -70,6 +82,10 @@ const setSpecificTimeValue = () => {
 const fillEventData = (data) => {
   const container = $("#events-container");
   container.empty();
+  if (data.message) {
+    container.text(data.message);
+    return;
+  }
 
   for (const event of data) {
     console.log(event);
