@@ -4,12 +4,16 @@
   font-size: 4rem;
   height: 80px;
   margin: 0 auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .time-separator {
   vertical-align: text-bottom;
   color: #fff;
+}
+
+.time-separator:not(.blink) {
+  color: grey;
 }
 
 .time,
@@ -70,8 +74,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #play-pause-container {
-  margin: 0;
-  margin-bottom: 0.5rem;
+  margin: 0 auto;
+  width: 40px;
+  margin-bottom: 1rem;
 }
 
 .btn-events {
@@ -82,11 +87,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .blink {
-  animation: blinker 2s linear infinite;
+  animation: blinker 1.5s linear infinite;
 }
 
 @keyframes blinker {
   50% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
 }

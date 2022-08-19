@@ -7,20 +7,19 @@
     <span class="time-separator">:</span>
     <span id="minutes" class="time"></span>
 </div>
+<div id="play-pause-container">
+    <button id="play" style="display:none"
+        class="btn-floating btn-small waves-effect waves-light deep-orange darken-4"><i
+            class="material-icons">play_arrow</i></button>
+    <button id="pause" class="btn-floating btn-small waves-effect waves-light deep-orange darken-4"><i
+            class="material-icons">pause</i></button>
+</div>
 
 <div class="row">
 
     <div id="events-container" class="col s7 m8 offset-l3 l6"></div>
 
     <div id="specific-time" class="col s5 m4 l3">
-        <div id="play-pause-container">
-            <button id="play" style="display:none"
-                class="btn-floating btn-small waves-effect waves-light deep-orange darken-4"><i
-                    class="material-icons">play_arrow</i></button>
-            <button id="pause" class="btn-floating btn-small waves-effect waves-light deep-orange darken-4"><i
-                    class="material-icons">pause</i></button>
-        </div>
-
         <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
         <p>
             <input type="number" id="specific-hour" min="0" max="23" value="23" />
