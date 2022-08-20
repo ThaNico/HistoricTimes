@@ -15,6 +15,9 @@
 - heroku run python manage.py migrate  
 - heroku run python manage.py createsuperuser  
 
+## Translation management
+- Create .po files : `django-admin makemessages --all`
+- Compile them : `django-admin compilemessages`
 
 
 

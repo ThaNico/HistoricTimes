@@ -12,4 +12,4 @@ class Event(models.Model):
     status = models.PositiveSmallIntegerField(choices=Status.choices, default=Status.ON_HOLD)
 
     def __str__(self):
-        return '{} {} {}'.format(self.time.strftime('%H:%M'), self.year, self.label)
+        return '{} {}'.format(self.time.strftime('%H:%M'), self.label)
