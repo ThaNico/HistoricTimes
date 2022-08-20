@@ -2,8 +2,12 @@
 
 ## Commandes utils
 - Gen secret : `python -c 'import secrets; print(secrets.token_hex(100))'`
-- Créer reqs : `pip freeze > requirements.txt`
-- Créer reqs mieux : `pip-chill -v > requirements.txt`
+- Créer reqs : `pip-chill -v > requirements.txt`
+- Reset pip packages : `pip freeze --exclude-editable | xargs pip uninstall -y`
+- Reset db :
+  - `find . -path "*/migrations/*.py" -not -name "__init__.py" -delete`
+  - `find . -path "*/migrations/*.pyc"  -delete`
+  - Remove sqlite or drop, then redo migrations
 
 ## Production AZ
 - https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment#getting_your_website_ready_to_publish
