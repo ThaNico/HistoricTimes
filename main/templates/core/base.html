@@ -19,6 +19,10 @@
 
 <body class="grey darken-4 blue-grey-text text-lighten-5">
   <div class="container">
+    <a href="{% url 'home' %}">
+      <img id="logo" src="{% static 'logo/logo.png' %}" alt="Logo" />
+    </a>
+
     <div class="row">
       <div id="mainColumn" class="col s12 m12 l12">
         {% block content %}
