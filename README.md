@@ -6,7 +6,6 @@ Users are free to add historic events (with sources) and they will be displayed 
 
 ![chrome_h1qSBq18zB](https://user-images.githubusercontent.com/9906385/185783895-a7d5de51-5507-4112-a951-74867f58a061.gif)
 
-
 ## Tech used
 
 - Django, Materializecss, JQuery
@@ -24,23 +23,6 @@ Users are free to add historic events (with sources) and they will be displayed 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-- TBD
-
-## [0.1.0] - 2022-08-21
-
-### Added
-
-- Initial release
 
 ## License
 
