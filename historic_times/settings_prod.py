@@ -1,13 +1,10 @@
 import os
 
-
 DEBUG = False
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-ALLOWED_HOSTS = ["127.0.0.1", "TODO.herokuapp.com"]
-
-# TODO caching
+ALLOWED_HOSTS = ["127.0.0.1", "historic-times.herokuapp.com"]
 
 # if https:
 CSRF_COOKIE_SECURE = True
