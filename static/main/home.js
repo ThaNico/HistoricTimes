@@ -1,4 +1,5 @@
 const MS_BETWEEN_UPDATES = 10000;
+const MS_CACHE_DURATION = 7200_000; // 2h
 let timer = null;
 
 $(document).ready(function () {
@@ -17,7 +18,7 @@ $(document).ready(function () {
 });
 
 const setInitialTimeValue = () => {
-  var current = new Date();
+  const current = new Date();
   setTimeValue(current.getHours(), current.getMinutes());
 };
 
@@ -111,9 +112,25 @@ const fillEventData = (data) => {
 };
 
 const getCachedHour = (hour) => {
-  return JSON.parse(localStorage.getItem(`events_${hour}`));
+  const key = `events_${hour}`;
+  const item = JSON.parse(localStorage.getItem(key));
+  if (!item) {
+    return null;
+  }
+
+  const current = new Date();
+  if (current.getTime() > item.maxage) {
+    localStorage.removeItem(key);
+    return null;
+  }
+  return item.data;
 };
 
 const setCachedHour = (hour, data) => {
-  localStorage.setItem(`events_${hour}`, JSON.stringify(data));
+  const current = new Date();
+  const item = {
+    data: data,
+    maxage: current.getTime() + MS_CACHE_DURATION,
+  };
+  localStorage.setItem(`events_${hour}`, JSON.stringify(item));
 };
