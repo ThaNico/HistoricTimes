@@ -163,4 +163,3 @@ HCAPTCHA_SECRET_KEY = os.environ['HCAPTCHA_SECRET_KEY']
 if os.environ.get('PRODUCTION'):
     print("Loading production settings")
     from .settings_prod import *  # noqa
-print("Settings loaded")
