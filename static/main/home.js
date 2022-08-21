@@ -25,8 +25,7 @@ const createTimer = () => {
   stopTimer();
   timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
   $("#time-container .time-separator").addClass("blink");
-  $("#play").hide();
-  $("#pause").show();
+  togglePausePlayButtons(false);
 };
 
 const stopTimer = () => {
@@ -34,8 +33,12 @@ const stopTimer = () => {
     clearInterval(timer);
   }
   $("#time-container .time-separator").removeClass("blink");
-  $("#play").show();
-  $("#pause").hide();
+  togglePausePlayButtons(true);
+};
+
+const togglePausePlayButtons = (displayPlay) => {
+  $("#play").toggle(displayPlay);
+  $("#pause").toggle(!displayPlay);
 };
 
 const setTimeValue = (hours, minutes) => {
@@ -48,22 +51,25 @@ const pad2numbers = (number) =>
   number.toLocaleString(undefined, { minimumIntegerDigits: 2 });
 
 const fetchEvents = () => {
-  stopTimer();
-
   const hours = $("#hours").text();
-  const minutes = $("#minutes").text();
+  const cachedData = getCachedHour(hours);
+  if (cachedData !== null) {
+    fillEventData(cachedData);
+    return;
+  }
+
+  stopTimer();
   $.ajax({
     method: "GET",
-    url: `/events/${hours}/${minutes}`,
+    url: `/events/${hours}`,
   }).done(function (data) {
     createTimer();
+    setCachedHour(hours, data);
     fillEventData(data);
   });
 };
 
 const increaseTimeValue = () => {
-  if (!document.hasFocus()) return;
-
   let hours = parseInt($("#hours").text());
   let minutes = parseInt($("#minutes").text());
   minutes++;
@@ -88,16 +94,26 @@ const setSpecificTimeValue = () => {
 const fillEventData = (data) => {
   const container = $("#events-container");
   container.empty();
-  if (data.message) {
-    container.text(data.message);
+
+  const key = `${$("#hours").text()}:${$("#minutes").text()}:00`;
+  if (!(key in data)) {
+    container.text("There are no events to display for this time.");
     return;
   }
 
-  for (const event of data) {
+  for (const event of data[key]) {
     const eventLine = $("#event-template").clone().removeAttr("id");
     eventLine.find(".event-text").text(event["label"]);
     eventLine.find(".event-source").text(event["source"]);
     eventLine.find(".event-source").attr("href", event["source"]);
     eventLine.appendTo(container);
   }
+};
+
+const getCachedHour = (hour) => {
+  return JSON.parse(localStorage.getItem(`events_${hour}`));
+};
+
+const setCachedHour = (hour, data) => {
+  localStorage.setItem(`events_${hour}`, JSON.stringify(data));
 };
