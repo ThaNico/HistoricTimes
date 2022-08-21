@@ -74,7 +74,7 @@ const fetchEvents = () => {
 };
 
 const moveTimeValue = (
-  increaseHours = true,
+  increaseHours = false,
   increaseMinutes = true,
   decreaseHours = false,
   decreaseMinutes = false
