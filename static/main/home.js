@@ -15,7 +15,9 @@ $(document).ready(function () {
 
   $("#play").on("click", createTimer);
   $("#pause").on("click", stopTimer);
-  $(".time-mover").on("click", moveTime);
+  $(".time-mover").on("click", function () {
+    moveTime($(this));
+  });
 });
 
 const setInitialTimeValue = () => {
@@ -25,7 +27,7 @@ const setInitialTimeValue = () => {
 
 const createTimer = () => {
   stopTimer();
-  timer = setInterval(increaseTimeValue, MS_BETWEEN_UPDATES);
+  timer = setInterval(moveTimeValue, MS_BETWEEN_UPDATES);
   $("#time-container .time-separator").addClass("blink");
   togglePausePlayButtons(false);
 };
@@ -71,18 +73,35 @@ const fetchEvents = () => {
   });
 };
 
-const increaseTimeValue = () => {
+const moveTimeValue = (
+  increaseHours = true,
+  increaseMinutes = true,
+  decreaseHours = false,
+  decreaseMinutes = false
+) => {
   let hours = parseInt($("#hours").text());
   let minutes = parseInt($("#minutes").text());
-  minutes++;
-  if (minutes > 59) {
-    minutes = 0;
-    hours++;
-    if (hours > 23) {
-      hours = 0;
-    }
-  }
+
+  if (increaseMinutes) minutes++;
+  else if (decreaseMinutes) minutes--;
+  if (increaseHours) hours++;
+  else if (decreaseHours) hours--;
+
+  minutes = checkMinutes(minutes);
+  hours = checkHours(hours);
   setTimeValue(hours, minutes);
+};
+
+const checkMinutes = (minutes) => {
+  if (minutes > 59) return 0;
+  else if (minutes < 0) return 59;
+  return minutes;
+};
+
+const checkHours = (hours) => {
+  if (hours > 23) return 0;
+  else if (hours < 0) return 23;
+  return hours;
 };
 
 const setSpecificTimeValue = () => {
@@ -136,6 +155,14 @@ const setCachedHour = (hour, data) => {
   localStorage.setItem(`events_${hour}`, JSON.stringify(item));
 };
 
-const moveTime = () => {
-  console.log("aaaa");
+const moveTime = (arrowClicked) => {
+  stopTimer();
+  const isUp = arrowClicked.hasClass("time-mover-up");
+  const isHours = arrowClicked.hasClass("time-mover-hours");
+  moveTimeValue(
+    isHours && isUp,
+    !isHours && isUp,
+    isHours && !isUp,
+    !isHours && !isUp
+  );
 };
