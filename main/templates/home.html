@@ -3,9 +3,17 @@
 
 {% block content %}
 <div id="time-container">
-    <span id="hours" class="time"></span>
+    <span class="time-container-bloc">
+        <span id="hours" class="time"></span>
+        <div class="time-mover time-mover-up time-mover-hours">^</div>
+        <div class="time-mover time-mover-down time-mover-hours">^</div>
+    </span>
     <span class="time-separator">:</span>
-    <span id="minutes" class="time"></span>
+    <span class="time-container-bloc">
+        <span id="minutes" class="time"></span>
+        <div class="time-mover time-mover-up time-mover-minutes">^</div>
+        <div class="time-mover time-mover-down time-mover-minutes">^</div>
+    </span>
 </div>
 <div id="play-pause-container">
     <button id="play" style="display:none"

@@ -15,6 +15,7 @@ $(document).ready(function () {
 
   $("#play").on("click", createTimer);
   $("#pause").on("click", stopTimer);
+  $(".time-mover").on("click", moveTime);
 });
 
 const setInitialTimeValue = () => {
@@ -133,4 +134,8 @@ const setCachedHour = (hour, data) => {
     maxage: current.getTime() + MS_CACHE_DURATION,
   };
   localStorage.setItem(`events_${hour}`, JSON.stringify(item));
+};
+
+const moveTime = () => {
+  console.log("aaaa");
 };

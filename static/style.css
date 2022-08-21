@@ -103,3 +103,28 @@ input[type="number"]::-webkit-outer-spin-button {
     opacity: 0.2;
   }
 }
+
+.time-container-bloc {
+  position: relative;
+}
+
+.time-mover {
+  position: absolute;
+  color: white;
+  font-size: 26px;
+  left: 27px;
+}
+
+.time-mover:hover {
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.time-mover-up {
+  top: -16px;
+}
+
+.time-mover-down {
+  bottom: -23px;
+  transform: rotate(180deg);
+}
