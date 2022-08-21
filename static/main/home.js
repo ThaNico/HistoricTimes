@@ -79,6 +79,8 @@ const moveTimeValue = (
   decreaseHours = false,
   decreaseMinutes = false
 ) => {
+  if (!document.hasFocus()) return;
+
   let hours = parseInt($("#hours").text());
   let minutes = parseInt($("#minutes").text());
 
