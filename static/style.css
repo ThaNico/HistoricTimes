@@ -128,3 +128,9 @@ input[type="number"]::-webkit-outer-spin-button {
   bottom: -23px;
   transform: rotate(180deg);
 }
+
+.h-captcha {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}

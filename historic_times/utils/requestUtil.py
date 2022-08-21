@@ -1,3 +1,6 @@
+import requests
+from django.conf import settings
+
 KEY_REQUEST_MSG_SUCCESS = "message_success"
 KEY_REQUEST_MSG_ERROR = "message_error"
 
@@ -18,3 +21,16 @@ def moveSessionMessageToContext(key, request, array):
             addMessageError(array, request.session[key])
         del request.session[key]
         request.session.modified = True
+
+
+def isCaptchaValid(token):
+    params = {
+        "secret": settings.HCAPTCHA_SECRET_KEY,
+        "response": token
+    }
+    response = requests.post('https://hcaptcha.com/siteverify', params)
+    json = response.json()
+    print(json)
+    if 'success' not in json or not json['success']:
+        return False
+    return True
