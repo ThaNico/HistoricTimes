@@ -1,1 +1,1 @@
-web: gunicorn gecepp.wsgi --log-file -
+web: gunicorn historic_times.wsgi --log-file -

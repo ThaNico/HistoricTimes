@@ -8,16 +8,12 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-            <button class="btn waves-effect waves-light blue btn-events" type="submit" name="action">
+            <button class="btn waves-effect waves-light blue btn-events" type="submit">
                 Create
             </button>
 
-            <a class="waves-effect waves-teal btn-flat btn-events blue-text" href="/">Go back</a>
+            <a class="waves-effect waves-teal btn-flat btn-events blue-text" href="{% url 'home' %}">Go back</a>
         </form>
     </div>
 </div>
-{% endblock %}
-
-{% block custom_script %}
-{{ block.super }}
 {% endblock %}

@@ -1,18 +1,20 @@
-from datetime import datetime
+from itertools import groupby
+
 from django.http import JsonResponse
 from django.views import View
+from historic_times.utils.dateUtil import timeStringToTime
 from main.models import Event
+
 from ..moserializers import EventSerializer
-from itertools import groupby
 
 
 class EventsView(View):
     # We load the current hour and the client will cache it
     # One nice way would have been to retrieve N results from each HH:MM, kinda like sampling
-    # But I think it might slow down everything so I'll need to benchmark later with more data
+    # But I think it might slow down everything so I might benchmark later with more data
     def get(self, request, hours):
-        timeStart = datetime.strptime(str(hours) + ':00', '%H:%M').time()
-        timeEnd = datetime.strptime(str(hours) + ':59', '%H:%M').time()
+        timeStart = timeStringToTime(hours, 0)
+        timeEnd = timeStringToTime(hours, 59)
         
         results = Event.objects.filter(status=Event.Status.VALID, time__gte=timeStart, time__lte=timeEnd)\
             .values("label", "source", "time").order_by('time')

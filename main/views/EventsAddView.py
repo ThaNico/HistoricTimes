@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
-from django.views import View
 from django.utils.translation import gettext_lazy as _
+from django.views import View
+from historic_times.utils.requestUtil import addMessageSuccess
 
 from ..forms.EventForm import EventForm
 
@@ -17,6 +18,6 @@ class EventsAddView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            request.session['message_success'] = str(_("Thank you, the event will be reviewed by moderators !"))
+            addMessageSuccess(request.session, str(_("Thank you, the event will be reviewed by moderators !")))
             return redirect("home")
         return render(request, self.template_name, { 'form': form })

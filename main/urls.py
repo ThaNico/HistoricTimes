@@ -1,10 +1,9 @@
 from django.urls import path
 
-from .views.EventsAddView import EventsAddView
-from .views.EventsView import EventsView
-
 from main.views.HomeView import HomeView
 
+from .views.EventsAddView import EventsAddView
+from .views.EventsView import EventsView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
