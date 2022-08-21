@@ -2,7 +2,8 @@
 
 HistoricTimes is a webapp that displays historic events that happened at a specific time (hour and minute).  
 For example end of the WWI hostilities at 11am in 1918.  
-Users are free to add historic events (with sources) and they will be displayed after being reviewed by admins.
+Users are free to add historic events (with sources) and they will be displayed after being reviewed by admins.  
+The app is available on [https://historic-times.herokuapp.com](https://historic-times.herokuapp.com)
 
 ![chrome_h1qSBq18zB](https://user-images.githubusercontent.com/9906385/185783895-a7d5de51-5507-4112-a951-74867f58a061.gif)
 

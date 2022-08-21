@@ -112,7 +112,7 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   color: white;
   font-size: 26px;
-  left: 27px;
+  left: 28px;
 }
 
 .time-mover:hover {
@@ -121,7 +121,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .time-mover-up {
-  top: -16px;
+  top: -1rem;
 }
 
 .time-mover-down {
@@ -130,7 +130,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .h-captcha {
+  margin-bottom: 1rem;
+}
+
+.flex-center {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+}
+
+#label-explain {
+  font-size: 11px;
+  text-align: center;
 }
