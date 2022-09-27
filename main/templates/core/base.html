@@ -20,7 +20,7 @@
 <body class="grey darken-4 blue-grey-text text-lighten-5">
   <div class="container">
     <div class="row">
-      <div class="col s12 m8 l9">
+      <div class="col s12">
         <a href="{% url 'home' %}">
           <img id="logo" src="{% static 'logo/logo.png' %}" alt="Logo" />
         </a>
@@ -30,10 +30,6 @@
         </label>
         <label id="label-made" class="blue-grey-text text-lighten-5 center">Made with ❤️ by
           <a href="https://github.com/ThaNico/HistoricTimes" target="_blank">ThaNico</a></label>
-      </div>
-      <div class="col s12 m4 l3">
-        {% block header %}
-        {% endblock %}
       </div>
     </div>
 

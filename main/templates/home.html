@@ -1,29 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block header %}
-<div id="specific-time" class="center">
-    <p>
-        <a href="{% url 'add-event' %}" class="waves-effect waves-light btn blue hide-on-small-only">
-            Add an event</a>
-    </p>
-
-    <hr class="show-on-small" />
-
-    <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
-    <p>
-        <input type="number" id="specific-hour" min="0" max="23" value="23" />
-        <span class="time-separator">:</span>
-        <input type="number" id="specific-minute" min="0" max="59" value="59" />
-
-        <button id="specific-search" class="btn-floating btn-small waves-effect waves-light blue"><i
-                class="material-icons">navigate_next</i></button>
-    </p>
-
-    <hr class="show-on-small" />
-</div>
-{% endblock %}
-
 {% block content %}
 <div id="time-container">
     <span class="time-container-bloc">
@@ -50,6 +27,7 @@
 <div class="row">
     <div id="events-container" class="col"></div>
 </div>
+<hr />
 
 <div id="event-template" class="event">
     <blockquote>
@@ -58,10 +36,21 @@
     </blockquote>
 </div>
 
-<div class="fixed-action-btn hide-on-med-and-up">
-    <a class="btn-floating btn-large blue" href="{% url 'add-event' %}">
-        <i class="large material-icons">add</i>
-    </a>
+<div id="specific-time" class="row center">
+    <p>
+        <a href="{% url 'add-event' %}" class="waves-effect waves-light btn blue">
+            Add an event</a>
+    </p>
+
+    <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
+    <p>
+        <input type="number" id="specific-hour" min="0" max="23" value="23" />
+        <span class="time-separator">:</span>
+        <input type="number" id="specific-minute" min="0" max="59" value="59" />
+
+        <button id="specific-search" class="btn-floating btn-small waves-effect waves-light blue"><i
+                class="material-icons">navigate_next</i></button>
+    </p>
 </div>
 {% endblock %}
 
