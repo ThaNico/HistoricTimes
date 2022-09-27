@@ -24,10 +24,12 @@
         <a href="{% url 'home' %}">
           <img id="logo" src="{% static 'logo/logo.png' %}" alt="Logo" />
         </a>
+
         <label id="label-explain" class="blue-grey-text text-lighten-5 center">
           This website displays historic events that happened at a specific time (hour and minute, locally).<br>
           For example the end of WWI hostilities at 11am in 1918, feel free to add events !
         </label>
+
         <label id="label-made" class="blue-grey-text text-lighten-5 center">Made with ❤️ by
           <a href="https://github.com/ThaNico/HistoricTimes" target="_blank">ThaNico</a></label>
       </div>
@@ -40,6 +42,7 @@
       </div>
     </div>
   </div>
+
   <script type="text/javascript" src="{% static 'ext/js/jquery.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'ext/js/materialize.min.js' %}"></script>
   {% block custom_script %}

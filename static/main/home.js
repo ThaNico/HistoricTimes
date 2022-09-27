@@ -1,21 +1,21 @@
 const MS_BETWEEN_UPDATES = 10000;
-const MS_CACHE_DURATION = 7200_000; // 2h
+const MS_CACHE_DURATION = 3600_000; // 1h
 let timer = null;
 
 $(document).ready(function () {
   setInitialTimeValue();
   createTimer();
 
-  $("#specific-search").on("click", setSpecificTimeValue);
-  $("#specific-hour, #specific-minute").on("keydown", function search(e) {
+  $('#specific-search').on('click', setSpecificTimeValue);
+  $('#specific-hour, #specific-minute').on('keydown', function search(e) {
     if (e.keyCode == 13) {
       setSpecificTimeValue();
     }
   });
 
-  $("#play").on("click", createTimer);
-  $("#pause").on("click", stopTimer);
-  $(".time-mover").on("click", function () {
+  $('#play').on('click', createTimer);
+  $('#pause').on('click', stopTimer);
+  $('.time-mover').on('click', function () {
     moveTime($(this));
   });
 });
@@ -28,7 +28,7 @@ const setInitialTimeValue = () => {
 const createTimer = () => {
   stopTimer();
   timer = setInterval(moveTimeValue, MS_BETWEEN_UPDATES);
-  $("#time-container .time-separator").addClass("blink");
+  $('#time-container .time-separator').addClass('blink');
   togglePausePlayButtons(false);
 };
 
@@ -36,18 +36,18 @@ const stopTimer = () => {
   if (timer) {
     clearInterval(timer);
   }
-  $("#time-container .time-separator").removeClass("blink");
+  $('#time-container .time-separator').removeClass('blink');
   togglePausePlayButtons(true);
 };
 
 const togglePausePlayButtons = (displayPlay) => {
-  $("#play").toggle(displayPlay);
-  $("#pause").toggle(!displayPlay);
+  $('#play').toggle(displayPlay);
+  $('#pause').toggle(!displayPlay);
 };
 
 const setTimeValue = (hours, minutes) => {
-  $("#hours").text(pad2numbers(hours));
-  $("#minutes").text(pad2numbers(minutes));
+  $('#hours').text(pad2numbers(hours));
+  $('#minutes').text(pad2numbers(minutes));
   fetchEvents();
 };
 
@@ -55,7 +55,7 @@ const pad2numbers = (number) =>
   number.toLocaleString(undefined, { minimumIntegerDigits: 2 });
 
 const fetchEvents = () => {
-  const hours = $("#hours").text();
+  const hours = $('#hours').text();
   const cachedData = getCachedHour(hours);
   if (cachedData !== null) {
     fillEventData(cachedData);
@@ -64,7 +64,7 @@ const fetchEvents = () => {
 
   stopTimer();
   $.ajax({
-    method: "GET",
+    method: 'GET',
     url: `/events/${hours}`,
   }).done(function (data) {
     createTimer();
@@ -73,6 +73,7 @@ const fetchEvents = () => {
   });
 };
 
+// The default call only increases minutes
 const moveTimeValue = (
   increaseHours = false,
   increaseMinutes = true,
@@ -81,8 +82,8 @@ const moveTimeValue = (
 ) => {
   if (!document.hasFocus()) return;
 
-  let hours = parseInt($("#hours").text());
-  let minutes = parseInt($("#minutes").text());
+  let hours = parseInt($('#hours').text());
+  let minutes = parseInt($('#minutes').text());
 
   if (increaseMinutes) minutes++;
   else if (decreaseMinutes) minutes--;
@@ -107,28 +108,28 @@ const checkHours = (hours) => {
 };
 
 const setSpecificTimeValue = () => {
-  let hours = parseInt($("#specific-hour").val());
-  let minutes = parseInt($("#specific-minute").val());
+  let hours = parseInt($('#specific-hour').val());
+  let minutes = parseInt($('#specific-minute').val());
   if (!isNaN(hours) && !isNaN(minutes)) {
     setTimeValue(hours, minutes);
   }
 };
 
 const fillEventData = (data) => {
-  const container = $("#events-container");
+  const container = $('#events-container');
   container.empty();
 
-  const key = `${$("#hours").text()}:${$("#minutes").text()}:00`;
+  const key = `${$('#hours').text()}:${$('#minutes').text()}:00`;
   if (!(key in data)) {
-    container.text("There are no events to display for this time.");
+    container.text('There are no events to display for this time.');
     return;
   }
 
   for (const event of data[key]) {
-    const eventLine = $("#event-template").clone().removeAttr("id");
-    eventLine.find(".event-text").text(event["label"]);
-    eventLine.find(".event-source").text(event["source"]);
-    eventLine.find(".event-source").attr("href", event["source"]);
+    const eventLine = $('#event-template').clone().removeAttr('id');
+    eventLine.find('.event-text').text(event['label']);
+    eventLine.find('.event-source').text(event['source']);
+    eventLine.find('.event-source').attr('href', event['source']);
     eventLine.appendTo(container);
   }
 };
@@ -159,8 +160,8 @@ const setCachedHour = (hour, data) => {
 
 const moveTime = (arrowClicked) => {
   stopTimer();
-  const isUp = arrowClicked.hasClass("time-mover-up");
-  const isHours = arrowClicked.hasClass("time-mover-hours");
+  const isUp = arrowClicked.hasClass('time-mover-up');
+  const isHours = arrowClicked.hasClass('time-mover-hours');
   moveTimeValue(
     isHours && isUp,
     !isHours && isUp,
