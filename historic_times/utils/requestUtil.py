@@ -24,13 +24,15 @@ def moveSessionMessageToContext(key, request, array):
 
 
 def isCaptchaValid(token):
+    if settings.DEBUG:
+        return True
+        
     params = {
         "secret": settings.HCAPTCHA_SECRET_KEY,
         "response": token
     }
     response = requests.post('https://hcaptcha.com/siteverify', params)
     json = response.json()
-    print(json)
     if 'success' not in json or not json['success']:
         return False
     return True

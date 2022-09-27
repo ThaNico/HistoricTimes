@@ -156,7 +156,7 @@ LOGGING = {
 #######################################################################
 # Captcha
 #######################################################################
-HCAPTCHA_SECRET_KEY = os.environ['HCAPTCHA_SECRET_KEY']
+HCAPTCHA_SECRET_KEY = os.environ['HCAPTCHA_SECRET_KEY'] if "HCAPTCHA_SECRET_KEY" in os.environ else None
 #######################################################################
 if os.environ.get('PRODUCTION'):
     print("Loading production settings")
