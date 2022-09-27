@@ -111,6 +111,7 @@ const setSpecificTimeValue = () => {
   let hours = parseInt($('#specific-hour').val());
   let minutes = parseInt($('#specific-minute').val());
   if (!isNaN(hours) && !isNaN(minutes)) {
+    stopTimer();
     setTimeValue(hours, minutes);
   }
 };
