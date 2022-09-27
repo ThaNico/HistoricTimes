@@ -15,9 +15,8 @@ The app is available on [historic-times.herokuapp.com](https://historic-times.he
 ## Ideas, future development
 
 - Web app translation + allow multiple labels for translation
-- Improve events loading (load less but on a wider range)
-- With that, have a "load more" button
-- Upvote events (needs to be solid and that would need accounts)
+- Have a "load more" button or pagination
+- Upvote events (needs to be safe and that would require accounts)
 - Order events by date, votes...
 - If accounts then social login could be nice
 
@@ -42,7 +41,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ### Useful commands
 
 - Gen secret : `python -c 'import secrets; print(secrets.token_hex(100))'`
-- Create reqs : `pip-chill -v > requirements.txt` (uncomment and move django)
+- Create reqs : `pip-chill -v > requirements.txt` (uncomment django and move it)
 - Reset pip packages : `pip freeze --exclude-editable | xargs pip uninstall -y`
 - Reset db in dev :
   - `find . -path "*/migrations/*.py" -not -name "__init__.py" -delete`
