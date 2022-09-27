@@ -19,13 +19,23 @@
 
 <body class="grey darken-4 blue-grey-text text-lighten-5">
   <div class="container">
-    <a href="{% url 'home' %}">
-      <img id="logo" src="{% static 'logo/logo.png' %}" alt="Logo" />
-    </a>
-    <label id="label-explain" class="blue-grey-text text-lighten-5">
-      This website displays historic events that happened at a specific time (hour and minute, locally).<br>
-      For example the end of WWI hostilities at 11am in 1918, feel free to add events !
-    </label>
+    <div class="row">
+      <div class="col s12 m8 l9">
+        <a href="{% url 'home' %}">
+          <img id="logo" src="{% static 'logo/logo.png' %}" alt="Logo" />
+        </a>
+        <label id="label-explain" class="blue-grey-text text-lighten-5 center">
+          This website displays historic events that happened at a specific time (hour and minute, locally).<br>
+          For example the end of WWI hostilities at 11am in 1918, feel free to add events !
+        </label>
+        <label id="label-made" class="blue-grey-text text-lighten-5 center">Made with ❤️ by
+          <a href="https://github.com/ThaNico/HistoricTimes" target="_blank">ThaNico</a></label>
+      </div>
+      <div class="col s12 m4 l3">
+        {% block header %}
+        {% endblock %}
+      </div>
+    </div>
 
     <div class="row">
       <div id="mainColumn" class="col s12 m12 l12">

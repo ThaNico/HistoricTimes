@@ -1,6 +1,29 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
+{% block header %}
+<div id="specific-time" class="center">
+    <p>
+        <a href="{% url 'add-event' %}" class="waves-effect waves-light btn blue hide-on-small-only">
+            Add an event</a>
+    </p>
+
+    <hr class="show-on-small" />
+
+    <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
+    <p>
+        <input type="number" id="specific-hour" min="0" max="23" value="23" />
+        <span class="time-separator">:</span>
+        <input type="number" id="specific-minute" min="0" max="59" value="59" />
+
+        <button id="specific-search" class="btn-floating btn-small waves-effect waves-light blue"><i
+                class="material-icons">navigate_next</i></button>
+    </p>
+
+    <hr class="show-on-small" />
+</div>
+{% endblock %}
+
 {% block content %}
 <div id="time-container">
     <span class="time-container-bloc">
@@ -25,26 +48,7 @@
 </div>
 
 <div class="row">
-    <div id="events-container" class="col s7 m8 offset-l3 l6"></div>
-
-    <div id="specific-time" class="col s5 m4 l3">
-        <p>
-            <a href="{% url 'add-event' %}" class="waves-effect waves-light btn blue hide-on-small-only">
-                Add an event</a>
-        </p>
-
-        <label class="blue-grey-text text-lighten-5">Looking for a specific time ?</label>
-        <p>
-            <input type="number" id="specific-hour" min="0" max="23" value="23" />
-            <span class="time-separator">:</span>
-            <input type="number" id="specific-minute" min="0" max="59" value="59" />
-
-            <button id="specific-search" class="btn-floating btn-small waves-effect waves-light blue"><i
-                    class="material-icons">navigate_next</i></button>
-        </p>
-        <label class="blue-grey-text text-lighten-5">Made with ❤️ by
-            <a href="https://github.com/ThaNico/HistoricTimes" target="_blank">ThaNico</a></label>
-    </div>
+    <div id="events-container" class="col"></div>
 </div>
 
 <div id="event-template" class="event">

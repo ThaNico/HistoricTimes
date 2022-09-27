@@ -52,7 +52,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #specific-time {
-  text-align: center;
+  margin-top: 1rem;
 }
 
 #specific-time label {
@@ -139,7 +139,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #label-explain {
   font-size: 11px;
-  text-align: center;
   display: block;
   width: 100%;
+}
+
+#label-made {
+  width: 100%;
+  display: block;
+  padding-top: 0.5rem;
+}
+
+.center {
+  text-align: center;
 }
