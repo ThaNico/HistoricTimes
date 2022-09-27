@@ -112,7 +112,6 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   color: white;
   font-size: 26px;
-  bottom: -23px;
   line-height: 1.5rem;
   height: 1rem;
 }
@@ -122,13 +121,21 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-.time-mover-up {
-  left: 50%;
+.time-mover-down {
+  transform: rotate(180deg);
+  bottom: -23px;
 }
 
-.time-mover-down {
-  left: 10%;
-  transform: rotate(180deg);
+.time-mover-hours {
+  left: 30%;
+}
+
+.time-mover-minutes {
+  left: 37%;
+}
+
+.time-mover-minutes.time-mover-up {
+  top: -10px;
 }
 
 .h-captcha {
