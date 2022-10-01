@@ -4,6 +4,7 @@ HistoricTimes is a webapp that displays historic events that happened at a speci
 For example end of the WWI hostilities at 11am in 1918.  
 Users are free to add historic events (with sources) and they will be displayed after being reviewed by admins.  
 The app is available on [historic-times.herokuapp.com](https://historic-times.herokuapp.com)
+> Note: it will not be available anymore when heroku ends free plans on nov. 2022
 
 ![chrome_uOBT61K53a](https://user-images.githubusercontent.com/9906385/192593613-2caaa293-9e89-4010-9aba-56f588a9ec1d.gif)
 
@@ -13,7 +14,7 @@ The app is available on [historic-times.herokuapp.com](https://historic-times.he
 - For production : deployment via gunicorn on heroku [cf this awesome guide](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment)
 
 ## Ideas, future development
-
+> Note: I'm not maintaining the app, it was a small project for fun but here are some ideas
 - Web app translation + allow multiple labels for translation
 - Have a "load more" button or pagination
 - Upvote events (needs to be safe and that would require accounts)
