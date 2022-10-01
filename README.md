@@ -14,7 +14,7 @@ The app is available on [historic-times.herokuapp.com](https://historic-times.he
 - For production : deployment via gunicorn on heroku [cf this awesome guide](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment)
 
 ## Ideas, future development
-> Note: I'm not maintaining the app, it was a small project for fun but here are some ideas
+> Note: Not sure I will maintain the app, it was a small project for fun but here are some ideas
 - Web app translation + allow multiple labels for translation
 - Have a "load more" button or pagination
 - Upvote events (needs to be safe and that would require accounts)
